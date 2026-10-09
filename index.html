@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trendy Fashion Store</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- EmailJS SDK integration -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function(){
+      // EmailJS Public Key বসাতে হবে
+      emailjs.init("YOUR_PUBLIC_KEY"); 
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="navbar">
+    <div class="logo">Trendy Fashion</div>
+    <div class="cart-status" onclick="openCheckout()">
+      🛒 Cart: <span id="cart-count">0</span> items (<span id="total-price">0</span> BDT) | <b>Order Now</b>
+    </div>
+  </header>
+
+  <!-- Banner Section -->
+  <section class="hero">
+    <h1>Exclusive Dress Collection</h1>
+    <p>Find your best outfit today!</p>
+  </section>
+
+  <!-- Product List Section -->
+  <main class="products-container">
+    <h2>Our Dress Collection</h2>
+    
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400" alt="Casual Summer Dress">
+        <h3>Casual Summer Dress</h3>
+        <p class="price">1,200 BDT</p>
+        <button class="add-btn" onclick="addToCart('Casual Summer Dress', 1200)">Add to Cart</button>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400" alt="Stylish Party Dress">
+        <h3>Stylish Party Dress</h3>
+        <p class="price">2,500 BDT</p>
+        <button class="add-btn" onclick="addToCart('Stylish Party Dress', 2500)">Add to Cart</button>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400" alt="Elegant Evening Gown">
+        <h3>Elegant Evening Gown</h3>
+        <p class="price">3,800 BDT</p>
+        <button class="add-btn" onclick="addToCart('Elegant Evening Gown', 3800)">Add to Cart</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Cash on Delivery Checkout Popup -->
+  <div id="checkout-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeCheckout()">&times;</span>
+      <h2>Cash on Delivery Order</h2>
+      <p>Total Payable: <b><span id="modal-total">0</span> BDT</b></p>
+      
+      <form id="order-form" onsubmit="processOrder(event)">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" required placeholder="আপনার নাম লিখুন">
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" required placeholder="017XXXXXXXX">
+
+        <label for="address">Full Delivery Address:</label>
+        <textarea id="address" required placeholder="বাসা/রোড নম্বর, এলাকা ও জেলার নাম"></textarea>
+
+        <p class="payment-note">🚚 <b>Payment Mode:</b> Cash on Delivery (পণ্য হাতে পেয়ে টাকা দেবেন)</p>
+
+        <button type="submit" class="confirm-btn">Confirm Order</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Trendy Fashion Store. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
